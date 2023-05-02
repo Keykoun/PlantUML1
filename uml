@@ -1,0 +1,43 @@
+@startuml 1
+left to right direction
+skinparam packageStyle rect
+title 'Система тестов'
+actor user
+actor server
+
+user--> (Запуск тестов)
+user<-- (Отчет)
+server<-- (Запуск тестов)
+server--> (Результаты)
+server --> (Отчет)
+(Результаты) --> user
+@enduml 1
+
+@startuml 2
+
+class 1 as "Экран пользователя"
+{   
+   +Входные данные
+   +Запуск тестов
+   
+   
+}
+
+class 2 as "Обработка входных данных"
+{
+}
+interface 3 as "База данных"
+{ 
+  +Входные данные
+  +Результаты тестирований
+  +Отчеты
+}
+class 4 as "Результаты"
+{
+   +Посмотреть результаты
+   +Посмотреть отчет
+} 
+1 -- 2
+2 -- 3
+2 -- 4
+@enduml 2
